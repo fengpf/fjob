@@ -10,6 +10,7 @@ ENV TZ "Asia/Shanghai"
 WORKDIR $GOPATH/src/github.com/fengpf/job
 #将服务器的go工程代码加入到docker容器中
 ADD . $GOPATH/src/github.com/fengpf/job
+
 #go构建可执行文件
 # CMD go version && go build -v
 RUN go build .

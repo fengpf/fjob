@@ -1,0 +1,18 @@
+version: '2.1'
+services:
+  service:
+    container_name: test.com
+    build:
+      context: .
+    expose:
+      - 8080/tcp
+    networks:
+      - godockerdev_default
+      - local
+    volumes:
+      - .:/go/src/work
+networks:
+  godockerdev_default:
+    external:
+      name: fjob_default
+  local:

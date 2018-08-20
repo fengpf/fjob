@@ -1,0 +1,24 @@
+
+version: '2.1'
+services: 
+  mysql:
+    image: mariadb:latest
+    container_name: mysql_service
+    volumes:
+      - /Users/fpf/fjob/mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment: 
+      - MYSQL_ROOT_PASSWORD=root
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    volumes: 
+      - /Users/fpf/fjob/redis:/data
+  nginx-lb:
+    build: service/nginx/
+    ports:
+      - 80:80
+    command: >
+        nginx -g "daemon off;"
