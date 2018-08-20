@@ -1,10 +1,10 @@
 # fjob
 
-docker build -t fengpf/fjob:1.0 .
+docker build -t mountainfeng/fjob:1.1 .
 
-docker run -d --rm --name fjob fengpf/fjob:1.0
+docker run -d --rm --name fjob mountainfeng/fjob:1.1
 
-docker push fengpf/fjob:1.0
+docker push mountainfeng/fjob:1.1
 
 
 查看network的名称，执行 
