@@ -1,0 +1,36 @@
+language: go
+
+go:
+#- "1.9"
+- "1.10.x"
+
+services:
+- docker
+
+env:
+- FJOB_VER=1.0
+
+# 默认install是go get -t ./...
+install:
+#- go get -v -t ./...
+- docker pull golang:1.10.3-alpine
+- docker run 
+  --rm 
+  -v $TRAVIS_BUILD_DIR:/go/src/github.com/fengpf/fjob
+  -w /go/src/github.com/fengpf/fjob
+  golang:1.10.3-alpine 
+  sh -c 'go version && go build -v'
+- export FJOB_BUILD_VER=${FJOB_VER}.${TRAVIS_BUILD_NUMBER}
+- docker build -t mountainfeng/fjob:$FJOB_BUILD_VER ./
+
+# 默认script是go test -v ./...
+script:
+# 看看镜像有没有打成功
+- docker images
+
+# 全链路测试需要的条件太苛刻，暂时放弃
+# - go test -v ./...
+
+after_success:
+- docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+- docker push mountainfeng/fjob:$FJOB_BUILD_VER

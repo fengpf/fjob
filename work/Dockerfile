@@ -1,5 +1,5 @@
 
-FROM library/golang
+FROM mountainfeng/fjob:1.1
 # Godep for vendoring
 RUN go get github.com/beego/bee
 ENV APP_DIR $GOPATH/src/work

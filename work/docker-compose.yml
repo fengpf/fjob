@@ -7,12 +7,12 @@ services:
     expose:
       - 80/tcp
     networks:
-      - godockerdev_default
+      - godocker
       - local
     volumes:
       - .:/go/src/work
 networks:
-  godockerdev_default:
+  godocker:
     external:
       name: fjob_default
   local:
