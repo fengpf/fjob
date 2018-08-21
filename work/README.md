@@ -9,7 +9,8 @@ docker run -it --name work mountainfeng/work:1.0
 ### 将当前镜像发送到远端 hub.docker.com
 docker push mountainfeng/work:1.1
 
-docker-compose build && docker-compose up -d
-
 ### 查看网络
 docker network list
+
+### docker compose 
+docker-compose build && docker-compose up -d

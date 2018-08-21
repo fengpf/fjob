@@ -28,12 +28,6 @@ func init() {
 				fmt.Printf("redis.Dial error(%v)\n", err)
 				return nil, err
 			}
-			// if _, err := c.Do("AUTH", pwd); err != nil {
-			// 	c.Close()
-			// 	fmt.Printf("c.Do auth error(%v)\n", err)
-			// 	return nil, err
-			// }
-			// c.Do("SELECT", 0)//选择db
 			return c, err
 		},
 		TestOnBorrow: func(c redis.Conn, t time.Time) error {
@@ -117,7 +111,7 @@ func main() {
 				return
 			}
 			if value == "" {
-				println(name + "do not get Lock ")
+				println(name + " do not get Lock ")
 				return
 			}
 			println(name + " get Lock " + value)
