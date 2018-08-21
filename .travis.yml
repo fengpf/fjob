@@ -12,7 +12,9 @@ env:
 
 # 默认install是go get -t ./...
 install:
-#- go get -v -t ./...
+- go get -v -u -t github.com/garyburd/redigo/redis
+- go get -v -u -t github.com/satori/go.uuid
+
 - docker pull golang:1.10.3-alpine
 - docker run 
   --rm 
